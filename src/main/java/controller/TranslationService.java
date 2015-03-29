@@ -132,7 +132,7 @@ public class TranslationService {
             }
         }
 
-        return sb.toString();
+        return "translate: " + sb.toString();
     }
 
 }
