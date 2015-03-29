@@ -1,0 +1,5 @@
+cfg/WebConfig.class
+cfg/Application.class
+controller/TranslationService.class
+controller/SimpleCORSFilter.class
+controller/Test.class
