@@ -38,7 +38,7 @@ public class TranslationService {
                 "              <tr>\n" +
                 "                <td><textarea class=\"translate-input\"></textarea></td>\n" +
                 "                <td><img src=\"http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-13/72/Arrows-Sync-icon.png\"/></td>\n" +
-                "                <td><textarea class=\"translate-output\"></textarea></td>\n" +
+                "                <td><textarea readonly class=\"translate-output\"></textarea></td>\n" +
                 "              </tr>\n" +
                 "            </table>\n" +
                 "            <div class=\"buttonDiv\" style=\"width: 36%;margin: 0 auto;\">\n" +
@@ -50,6 +50,9 @@ public class TranslationService {
                 "                margin: 0px;\n" +
                 "                width: 421px;\n" +
                 "                height: 113px;\n" +
+                "                border: 2px solid #32409E\n" +
+                "\t              border-radius: 10px;\n" +
+                "                font-size: 2em;\n" +
                 "              }\n" +
                 "             .translate-output {\n" +
                 "               background-color: rgb(250, 250, 214);\n" +
@@ -99,8 +102,7 @@ public class TranslationService {
                 "              }\n" +
                 "\n" +
                 "            </style>\n" +
-                "        </div>\n" +
-                "\n";
+                "        </div>";
     }
 
     @RequestMapping(value="/translate", produces = "text/html; charset=UTF-8")
