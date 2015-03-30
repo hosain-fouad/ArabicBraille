@@ -42,7 +42,7 @@ public class TranslationService {
                 "              </tr>\n" +
                 "            </table>\n" +
                 "            <div class=\"buttonDiv\" style=\"width: 36%;margin: 0 auto;\">\n" +
-                "              <a href=\"#\" class=\"myButton\">twitter</a>\n" +
+                "              <a href=\"#\" class=\"myButton\">Translate</a>\n" +
                 "            </div>\n" +
                 "\n" +
                 "            <style type=\"text/css\">\n" +
