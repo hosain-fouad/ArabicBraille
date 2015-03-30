@@ -50,7 +50,7 @@ public class TranslationService {
                 "                margin: 0px;\n" +
                 "                width: 421px;\n" +
                 "                height: 113px;\n" +
-                "                border: 2px solid #32409E\n" +
+                "                border: 2px solid #32409E;\n" +
                 "\t              border-radius: 10px;\n" +
                 "                font-size: 2em;\n" +
                 "              }\n" +
