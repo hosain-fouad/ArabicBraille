@@ -24,6 +24,7 @@ public class Application extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/publicFiles/");
+        registry.addResourceHandler("/test/**").addResourceLocations("/public/");
     }
 
 //    @Bean

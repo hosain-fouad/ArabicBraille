@@ -1,5 +1,5 @@
-cfg/WebConfig.class
 cfg/Application.class
 controller/TranslationService.class
 controller/SimpleCORSFilter.class
+cfg/WebConfig.class
 controller/Test.class
