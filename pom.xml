@@ -40,7 +40,12 @@
             <artifactId>xsoup</artifactId>
             <version>0.3.0</version>
         </dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+    </dependencies>
 
 
     <build>
