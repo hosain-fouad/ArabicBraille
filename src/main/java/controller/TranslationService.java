@@ -66,11 +66,11 @@ public class TranslationService {
                 "              <tr>\n" +
                 "                <td></td>\n" +
                 "                <td></td>\n" +
-                "                <td><a class=\"downloadIt\" href=\"#\" style=\"float: right;\" >Download translation</a></td>\n" +
+                "                <td><button class=\"downloadIt\" style=\"float: right;\" >Download translation as .rtf</button></td>\n" +
                 "              </tr>\n" +
                 "            </table>\n" +
                 "            <div class=\"buttonDiv\" style=\"width: 36%;margin: 0 auto;\">\n" +
-                "              <a href=\"#\" class=\"myButton\">Translate</a>\n" +
+                "              <button class=\"myButton\">Translate</button>\n" +
                 "            </div>\n" +
                 "\n" +
                 "            <style type=\"text/css\">\n" +
@@ -84,83 +84,15 @@ public class TranslationService {
                 "              }\n" +
                 "             .translate-output {\n" +
                 "               background-color: rgb(250, 250, 214);\n" +
-                "               font-size: 3em;\n" +
+                "               font-size: 2em;\n" +
                 "               font-weight: bold;\n" +
                 "               border: 1px solid black;\n" +
-                "             }\n" +
+                "             }    \n" +
+                "                  \n" +
                 "             .myButton {\n" +
-                "              \t-moz-box-shadow: 0px 1px 0px 0px #f0f7fa;\n" +
-                "              \t-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;\n" +
-                "              \tbox-shadow: 0px 1px 0px 0px #f0f7fa;\n" +
-                "              \tbackground:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));\n" +
-                "              \tbackground:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);\n" +
-                "              \tbackground:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);\n" +
-                "              \tbackground:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);\n" +
-                "              \tbackground:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);\n" +
-                "              \tbackground:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);\n" +
-                "              \tfilter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);\n" +
-                "              \tbackground-color:#33bdef;\n" +
-                "              \t-moz-border-radius:6px;\n" +
-                "              \t-webkit-border-radius:6px;\n" +
-                "              \tborder-radius:6px;\n" +
-                "              \tborder:1px solid #057fd0;\n" +
-                "              \tdisplay:inline-block;\n" +
-                "              \tcursor:pointer;\n" +
-                "              \tcolor:#ffffff;\n" +
-                "              \tfont-family:arial;\n" +
-                "              \tfont-size:15px;\n" +
-                "              \tfont-weight:bold;\n" +
-                "              \tpadding:6px 24px;\n" +
-                "              \ttext-decoration:none;\n" +
-                "              \ttext-shadow:0px -1px 0px #5b6178;\n" +
-                "              }\n" +
-                "              .myButton:hover {\n" +
-                "              \tbackground:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));\n" +
-                "              \tbackground:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);\n" +
-                "              \tbackground:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);\n" +
-                "              \tbackground:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);\n" +
-                "              \tbackground:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);\n" +
-                "              \tbackground:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);\n" +
-                "              \tfilter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);\n" +
-                "              \tbackground-color:#019ad2;\n" +
-                "              }\n" +
-                "              .myButton:active {\n" +
-                "              \tposition:relative;\n" +
-                "              \ttop:1px;\n" +
-                "              }\n" +
-                "              \n" +
-                "              .downloadIt {\n" +
-                "                 border-top: 1px solid #96d1f8;\n" +
-                "                 background: #65a9d7;\n" +
-                "                 background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));\n" +
-                "                 background: -webkit-linear-gradient(top, #3e779d, #65a9d7);\n" +
-                "                 background: -moz-linear-gradient(top, #3e779d, #65a9d7);\n" +
-                "                 background: -ms-linear-gradient(top, #3e779d, #65a9d7);\n" +
-                "                 background: -o-linear-gradient(top, #3e779d, #65a9d7);\n" +
-                "                 padding: 2px 4px;\n" +
-                "                 -webkit-border-radius: 4px;\n" +
-                "                 -moz-border-radius: 4px;\n" +
-                "                 border-radius: 4px;\n" +
-                "                 -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;\n" +
-                "                 -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;\n" +
-                "                 box-shadow: rgba(0,0,0,1) 0 1px 0;\n" +
-                "                 text-shadow: rgba(0,0,0,.4) 0 1px 0;\n" +
-                "                 color: white;\n" +
-                "                 font-size: 15px;\n" +
-                "                 font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;\n" +
-                "                 text-decoration: none;\n" +
-                "                 vertical-align: middle;\n" +
-                "                 }\n" +
-                "              .downloadIt:hover {\n" +
-                "                 border-top-color: #28597a;\n" +
-                "                 background: #28597a;\n" +
-                "                 color: #ccc;\n" +
-                "                 }\n" +
-                "              .downloadIt:active {\n" +
-                "                 border-top-color: #1b435e;\n" +
-                "                 background: #1b435e;\n" +
-                "                 }\n" +
-                "\n" +
+                "                width: 120px;\n" +
+                "                height: 30px;\n" +
+                "              }    \n" +
                 "            </style>\n" +
                 "        </div>";
     }

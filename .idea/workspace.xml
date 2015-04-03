@@ -26,11 +26,11 @@
       <file leaf-file-name="TranslationService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/TranslationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9191375" vertical-offset="2119" max-vertical-offset="4260">
-              <caret line="164" column="31" selection-start-line="164" selection-start-column="31" selection-end-line="164" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.2425876" vertical-offset="1350" max-vertical-offset="3240">
+              <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10120#10142#0" expanded="true" />
+                <element signature="e#5047#5069#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -493,19 +493,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/TranslationService.java</url>
-          <line>170</line>
+          <line>102</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/TranslationService.java</url>
-          <line>169</line>
+          <line>101</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/TranslationService.java</url>
-          <line>253</line>
+          <line>185</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -540,7 +540,7 @@
           <caret line="73" column="28" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10120#10142#0" expanded="true" />
+            <element signature="e#5047#5069#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -677,11 +677,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/TranslationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9191375" vertical-offset="2119" max-vertical-offset="4260">
-          <caret line="164" column="31" selection-start-line="164" selection-start-column="31" selection-end-line="164" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.2425876" vertical-offset="1350" max-vertical-offset="3240">
+          <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10120#10142#0" expanded="true" />
+            <element signature="e#5047#5069#0" expanded="true" />
           </folding>
         </state>
       </provider>
