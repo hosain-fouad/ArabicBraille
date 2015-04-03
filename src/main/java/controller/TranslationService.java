@@ -16,7 +16,7 @@ public class TranslationService {
     public
     @ResponseBody
     String translate(@RequestParam(value = "input") String input) throws UnsupportedEncodingException {
-        HashMap<Character, Character> table = Grade1Map.table;
+        HashMap<Character, String> table = Grade1Map.table;
         StringBuffer sb = new StringBuffer();
 
         for (char c : input.toCharArray()) {

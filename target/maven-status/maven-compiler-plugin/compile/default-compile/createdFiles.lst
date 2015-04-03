@@ -1,6 +1,7 @@
 cfg/Application.class
 controller/TranslationService.class
 controller/TempTranslatePageService.class
+tables/Grade1Map.class
 cfg/WebConfig.class
 controller/FileDownloaderService.class
 cfg/SimpleCORSFilter.class
