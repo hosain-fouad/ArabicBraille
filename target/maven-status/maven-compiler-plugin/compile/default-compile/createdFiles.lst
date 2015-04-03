@@ -1,5 +1,6 @@
 cfg/Application.class
 controller/TranslationService.class
-controller/SimpleCORSFilter.class
+controller/TempTranslatePageService.class
 cfg/WebConfig.class
-controller/Test.class
+controller/FileDownloaderService.class
+cfg/SimpleCORSFilter.class
