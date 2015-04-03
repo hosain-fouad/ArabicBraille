@@ -77,7 +77,7 @@ public class TempTranslatePageService {
                 "              height: 113px;\n" +
                 "              border: 2px solid #32409E;\n" +
                 "              border-radius: 10px;\n" +
-                "              font-size: 2em;\n" +
+                "              font-size: 1em;\n" +
                 "            }\n" +
                 "           .translate-output {\n" +
                 "             background-color: rgb(250, 250, 214);\n" +
