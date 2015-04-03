@@ -15,7 +15,7 @@ public class TranslationService {
     @RequestMapping(value = "/translate", produces = "text/html; charset=UTF-8")
     public
     @ResponseBody
-    String translate(@RequestParam(value = "input") String input) throws UnsupportedEncodingException {
+    String translate(@RequestParam(value = "input") String input, @RequestParam(value = "grade") String grade) throws UnsupportedEncodingException {
         HashMap<Character, String> table = Grade1Map.table;
         StringBuffer sb = new StringBuffer();
 
@@ -33,8 +33,8 @@ public class TranslationService {
     @RequestMapping(value = "/translateEncoded", produces = "text/html; charset=UTF-8")
     public
     @ResponseBody
-    String translateEnocoded(@RequestParam(value = "input") String input) throws UnsupportedEncodingException {
+    String translateEnocoded(@RequestParam(value = "input") String input, @RequestParam(value = "grade") String grade) throws UnsupportedEncodingException {
         input = decode(input, "ASCII");
-        return translate(input);
+        return translate(input, grade);
     }
 }
