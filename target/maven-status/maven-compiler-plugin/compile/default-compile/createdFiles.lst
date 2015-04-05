@@ -1,7 +1,15 @@
 cfg/Application.class
 controller/TranslationService.class
-controller/TempTranslatePageService.class
-tables/Grade1Map.class
 cfg/WebConfig.class
+translators/Grade1Translator.class
+rules/Rule.class
+translators/Grade2Translator.class
+tables/Grade2Table.class
+controller/TempTranslatePageService.class
+utils/grade2/Hyphenation.class
+tables/Grade1Map.class
 controller/FileDownloaderService.class
+tables/Grade2Appreviation.class
+utils/grade2/WordProcessor.class
+translators/Translator.class
 cfg/SimpleCORSFilter.class

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@ComponentScan({"controller"})
+@ComponentScan({"controller","translators"})
 @EnableAutoConfiguration
 @Configuration
 @EnableWebMvc
@@ -26,14 +26,5 @@ public class Application extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/publicFiles/");
         registry.addResourceHandler("/test/**").addResourceLocations("/public/");
     }
-
-//    @Bean
-//    public FilterRegistrationBean filterRegistrationBean() {
-//        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-//        characterEncodingFilter.setEncoding("UTF-8");
-//        registrationBean.setFilter(characterEncodingFilter);
-//        return registrationBean;
-//    }
 
 }
