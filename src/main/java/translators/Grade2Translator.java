@@ -3,6 +3,7 @@ package translators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import rules.Rule;
+import tables.Grade1Map;
 import tables.Grade2Appreviation;
 import tables.Grade2Table;
 import tables.Trie;
@@ -40,6 +41,15 @@ public class Grade2Translator extends Translator{
         StringBuffer sb = new StringBuffer();
         int index = 0;
         while (index < word.length()) {
+
+            if(isNumber(word.charAt(index))){
+                sb.append("⠼");
+                while(isNumber(word.charAt(index))){
+                    sb.append(Grade1Map.table.get(word.charAt(index++)));
+                }
+                continue;
+            }
+
             Grade2Appreviation appreviation = Trie.getInstance().getLongestMatchAppreviation(word, index);
             if (appreviation != null) {
                 boolean success = true;
@@ -56,5 +66,14 @@ public class Grade2Translator extends Translator{
             index++;
         }
         return sb.toString();
+    }
+
+    private boolean isNumber(char c){
+        if((c>='0'&&c<='9') || (c>='٠'&&c<='٩')) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
