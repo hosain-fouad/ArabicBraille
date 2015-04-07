@@ -15,8 +15,14 @@ public class Grade1Translator extends Translator{
         HashMap<Character, String> table = Grade1Map.table;
         StringBuffer sb = new StringBuffer();
 
-        for (char c : input.toCharArray()) {
+        char[] chars = input.toCharArray();
+
+        for (int i=0; i<chars.length; i++) {
+            char c = chars[i];
             if (table.containsKey(c)) {
+                if(isNumber(c) && (i == 0 || !isNumber(chars[i-1]))){
+                    sb.append("⠼");
+                }
                 sb.append(table.get(c));
             } else {
                 sb.append(c);
@@ -24,5 +30,14 @@ public class Grade1Translator extends Translator{
         }
 
         return sb.toString();
+    }
+
+    private boolean isNumber(char c){
+        if((c>='0'&&c<='9') || (c>='٠'&&c<='٩')) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
