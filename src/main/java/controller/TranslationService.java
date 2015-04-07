@@ -16,10 +16,10 @@ import static java.net.URLDecoder.decode;
 public class TranslationService {
 
     @Autowired
-    Translator grade1Translator;
+    private Translator grade1Translator;
 
     @Autowired
-    Translator grade2Translator;
+    private Translator grade2Translator;
 
     @RequestMapping(value = "/translate", produces = "text/html; charset=UTF-8")
     public

@@ -19,16 +19,14 @@ public class TempTranslatePageService {
                 "    $( \".myButton\" ).click(function() {\n" +
                 "      var x = encodeURIComponent($('.translate-input').val());\n" +
                 "      var grade = $('input[name=grade]:checked').val();\n" +
-                "      if(grade==1) {\n" +
-                "        $.ajax({\n" +
-                "          url: \"/translateEncoded?grade=\"+grade+\"&&input=\"+x\n" +
-                "        }).then(function(data) {\n" +
-                "          $('.translate-output').html(data).text();\n" +
-                "        });\n" +
+                "      if(grade==2) {\n" +
+                "        alert(\"Sorry, Grade2 is under development. Grade1 might be used instead.\");\n" +
                 "      }\n" +
-                "      else{\n" +
-                "        alert(\"Sorry, Grade2 is not supported yet.\");\n" +
-                "      }\n" +
+                "      $.ajax({\n" +
+                "        url: \"/translateEncoded?grade=\"+grade+\"&&input=\"+x\n" +
+                "      }).then(function(data) {\n" +
+                "        $('.translate-output').html(data).text();\n" +
+                "      });\n" +
                 "\n" +
                 "    });\n" +
                 "\n" +
