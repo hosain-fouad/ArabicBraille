@@ -1,7 +1,5 @@
 package tables;
 
-import java.util.Map;
-
 /**
  * Created by hosainfathelbab on 4/6/15.
  */
@@ -15,8 +13,8 @@ public class Trie {
 
     public void constructBraille2Trie(){
         root = new TrieCell();
-        for(Grade2Appreviation appreviation: Grade2Table.getTable().values()){
-            insertAppreviation(appreviation);
+        for(Grade2Abbreviation abbreviation: Grade2Table.getTable()){
+            insertAbbreviation(abbreviation);
         }
     }
 
@@ -24,31 +22,31 @@ public class Trie {
         return instance;
     }
 
-    public void insertAppreviation(Grade2Appreviation appreviation) {
+    public void insertAbbreviation(Grade2Abbreviation abbreviation) {
         TrieCell currentCell = root;
-        for (char c : appreviation.getWord().toCharArray()) {
+        for (char c : abbreviation.getWord().toCharArray()) {
             if (!currentCell.getChildren().containsKey(c)) {
                 TrieCell newChild = new TrieCell();
                 currentCell.inserChild(c, newChild);
             }
             currentCell = currentCell.getChildren().get(c);
         }
-        currentCell.setAppreviation(appreviation);
+        currentCell.setAbbreviation(abbreviation);
     }
 
-    public Grade2Appreviation getLongestMatchAppreviation(String input, int index) {
+    public Grade2Abbreviation getLongestMatchAbbreviation(String input, int index) {
         char[] chars = input.toCharArray();
-        Grade2Appreviation longestAppreviation = null;
+        Grade2Abbreviation longestAbbreviation = null;
         TrieCell currentCell = root;
         for (int i = index; i < chars.length; i++) {
             char currentChar = chars[i];
             if (currentCell.hasChild(currentChar)) {
                 currentCell = currentCell.getChildren().get(currentChar);
-                if (currentCell.hasAppreviation()) {
-                    longestAppreviation = currentCell.getAppreviation();
+                if (currentCell.hasAbbreviation()) {
+                    longestAbbreviation = currentCell.getAbbreviation();
                 }
             }
         }
-        return longestAppreviation;
+        return longestAbbreviation;
     }
 }

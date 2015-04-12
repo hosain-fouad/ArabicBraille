@@ -1,8 +1,13 @@
 package controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by hosainfathelbab on 4/2/15.
@@ -92,4 +97,81 @@ public class TempTranslatePageService {
                 "      </div>";
     }
 
+
+    @RequestMapping(value = "/getSymbol", produces = "text/html; charset=UTF-8")
+    public
+    @ResponseBody
+    String translate(@RequestParam(value = "input") String input) throws UnsupportedEncodingException {
+
+        Map<String, String> mapping = new HashMap<String, String>();
+        mapping.put("1","⠁");
+        mapping.put("2","⠂");
+        mapping.put("12","⠃");
+        mapping.put("3","⠄");
+        mapping.put("13","⠅");
+        mapping.put("23","⠆");
+        mapping.put("123","⠇");
+        mapping.put("4","⠈");
+        mapping.put("14","⠉");
+        mapping.put("24","⠊");
+        mapping.put("124","⠋");
+        mapping.put("34","⠌");
+        mapping.put("134","⠍");
+        mapping.put("234","⠎");
+        mapping.put("1234","⠏");
+        mapping.put("5","⠐");
+        mapping.put("15","⠑");
+        mapping.put("25","⠒");
+        mapping.put("125","⠓");
+        mapping.put("35","⠔");
+        mapping.put("135","⠕");
+        mapping.put("235","⠖");
+        mapping.put("1235","⠗");
+        mapping.put("45","⠘");
+        mapping.put("145","⠙");
+        mapping.put("245","⠚");
+        mapping.put("1245","⠛");
+        mapping.put("345","⠜");
+        mapping.put("1345","⠝");
+        mapping.put("2345","⠞");
+        mapping.put("12345","⠟");
+        mapping.put("6","⠠");
+        mapping.put("16","⠡");
+        mapping.put("26","⠢");
+        mapping.put("126","⠣");
+        mapping.put("36","⠤");
+        mapping.put("136","⠥");
+        mapping.put("236","⠦");
+        mapping.put("1236","⠧");
+        mapping.put("46","⠨");
+        mapping.put("146","⠩");
+        mapping.put("246","⠪");
+        mapping.put("1246","⠫");
+        mapping.put("346","⠬");
+        mapping.put("1346","⠭");
+        mapping.put("2346","⠮");
+        mapping.put("12346","⠯");
+        mapping.put("56","⠰");
+        mapping.put("156","⠱");
+        mapping.put("256","⠲");
+        mapping.put("1256","⠳");
+        mapping.put("356","⠴");
+        mapping.put("1356","⠵");
+        mapping.put("2356","⠶");
+        mapping.put("12356","⠷");
+        mapping.put("456","⠸");
+        mapping.put("1456","⠹");
+        mapping.put("2456","⠺");
+        mapping.put("12456","⠻");
+        mapping.put("3456","⠼");
+        mapping.put("13456","⠽");
+        mapping.put("23456","⠾");
+        mapping.put("123456","⠿");
+
+        String output = "";
+        for(String symbol : input.split(","))
+            output += mapping.get(symbol);
+
+        return output;
+    }
 }

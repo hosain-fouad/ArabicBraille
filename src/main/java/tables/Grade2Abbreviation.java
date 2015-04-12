@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by hosainfathelbab on 4/4/15.
  */
-public class Grade2Appreviation {
+public class Grade2Abbreviation {
 
     private List<Rule> rules;
     private String symbol;
@@ -24,12 +24,12 @@ public class Grade2Appreviation {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Grade2Appreviation))
+        if (!(obj instanceof Grade2Abbreviation))
             return false;
         if (obj == this)
             return true;
 
-        Grade2Appreviation otherObject = (Grade2Appreviation) obj;
+        Grade2Abbreviation otherObject = (Grade2Abbreviation) obj;
         return this.word.equals(otherObject.word);
     }
 
@@ -37,23 +37,31 @@ public class Grade2Appreviation {
         return rules;
     }
 
-    public void setRules(List<Rule> rules) {
+    public Grade2Abbreviation addRule(Rule rule) {
+        this.rules.add(rule);
+        return this;
+    }
+
+    public Grade2Abbreviation setRules(List<Rule> rules) {
         this.rules = rules;
+        return this;
     }
 
     public String getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
+    public Grade2Abbreviation setSymbol(String symbol) {
         this.symbol = symbol;
+        return this;
     }
 
     public String getWord() {
         return word;
     }
 
-    public void setWord(String word) {
+    public Grade2Abbreviation setWord(String word) {
         this.word = word;
+        return this;
     }
 }

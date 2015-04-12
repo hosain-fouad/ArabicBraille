@@ -7,26 +7,26 @@ import java.util.Map;
  */
 public class TrieCell {
     private Map<Character, TrieCell> children = null;
-    private Grade2Appreviation appreviation = null;
+    private Grade2Abbreviation abbreviation = null;
 
     public Map<Character, TrieCell> getChildren() {
         return children;
     }
 
-    public Grade2Appreviation getAppreviation() {
-        return appreviation;
+    public Grade2Abbreviation getAbbreviation() {
+        return abbreviation;
     }
 
-    public void setAppreviation(Grade2Appreviation appreviation) {
-        this.appreviation = appreviation;
+    public void setAbbreviation(Grade2Abbreviation abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
     public boolean hasChild(Character c){
         return this.children.containsKey(c);
     }
 
-    public boolean hasAppreviation(){
-        return appreviation==null? false:true;
+    public boolean hasAbbreviation(){
+        return abbreviation ==null? false:true;
     }
 
     public void inserChild (Character c, TrieCell childCell) {

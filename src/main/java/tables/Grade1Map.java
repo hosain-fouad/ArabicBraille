@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 /**
  * Created by hosainfathelbab on 4/2/15.
+ * for more informatio about the table
+ * https://docs.google.com/spreadsheets/d/1VvrbGsTwVNcZjjhy2eZS0iTTVccEljAL6twJRdjO1bQ/edit?usp=sharing
  */
 public class Grade1Map {
 

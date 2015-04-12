@@ -4,16 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import rules.Rule;
 import tables.Grade1Map;
-import tables.Grade2Appreviation;
-import tables.Grade2Table;
+import tables.Grade2Abbreviation;
 import tables.Trie;
-import utils.grade2.Hyphenation;
-import utils.grade2.WordProcessor;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import utils.grade2.WordIterator;
+import java.util.Iterator;
 
 /**
  * Created by hosainfathelbab on 4/4/15.
@@ -24,16 +18,16 @@ public class Grade2Translator extends Translator{
     @Autowired
     private Translator grade1Translator;
 
-    private Map<String, Grade2Appreviation> grade2Table = Grade2Table.getTable();
-
     @Override
     public String translate(String input) {
-        // split based on the space
-        List<String> words = WordProcessor.getWords(input);
+
         StringBuffer sb = new StringBuffer();
-        for(String word: words){
-            sb.append(translateWord(word)).append(" ");
+
+        Iterator<String> wordIterator = new WordIterator(input);
+        while(wordIterator.hasNext()){
+            sb.append(translateWord(wordIterator.next()));
         }
+
         return sb.toString();
     }
 
@@ -44,21 +38,27 @@ public class Grade2Translator extends Translator{
 
             if(isNumber(word.charAt(index))){
                 sb.append("⠼");
-                while(isNumber(word.charAt(index))){
+                while(index < word.length() && isNumber(word.charAt(index))){
                     sb.append(Grade1Map.table.get(word.charAt(index++)));
                 }
                 continue;
             }
 
-            Grade2Appreviation appreviation = Trie.getInstance().getLongestMatchAppreviation(word, index);
-            if (appreviation != null) {
+            Grade2Abbreviation abbreviation = Trie.getInstance().getLongestMatchAbbreviation(word, index);
+            if (abbreviation != null) {
                 boolean success = true;
-                for (Rule rule : appreviation.getRules()) {
-                    success = success & rule.isValid(word, index);
+                if(abbreviation.getRules().size() > 0) {
+                    success = false;
+                    for (Rule rule : abbreviation.getRules()) {
+                        if (rule.isValid(word, abbreviation.getWord(), index)) {
+                            success = true;
+                            break;
+                        }
+                    }
                 }
                 if (success) {
-                    index = index + appreviation.getWord().length();
-                    sb.append(appreviation.getSymbol());
+                    index = index + abbreviation.getWord().length();
+                    sb.append(abbreviation.getSymbol());
                     continue;
                 }
             }
