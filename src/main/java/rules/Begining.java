@@ -5,7 +5,7 @@ package rules;
  */
 public class Begining implements Rule {
     @Override
-    public boolean isValid (String word, String abbreviation, int index) {
+    public boolean isValid(String word, String abbreviation, int index, String wordTranslationSoFar) {
         return index==0;
     }
 }

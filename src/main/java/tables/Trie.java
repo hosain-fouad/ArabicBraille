@@ -5,7 +5,10 @@ package tables;
  */
 public class Trie {
     private TrieCell root;
-    private static Trie instance = new Trie();
+    private static Trie instance;
+    static{
+        instance = new Trie();
+    }
 
     private Trie() {
         constructBraille2Trie();
@@ -45,6 +48,9 @@ public class Trie {
                 if (currentCell.hasAbbreviation()) {
                     longestAbbreviation = currentCell.getAbbreviation();
                 }
+            }
+            else{
+                break;
             }
         }
         return longestAbbreviation;

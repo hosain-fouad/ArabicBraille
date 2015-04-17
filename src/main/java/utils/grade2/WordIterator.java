@@ -30,8 +30,10 @@ public class WordIterator implements Iterator<String>{
         while(endIndex < this.text.length() && !Constants.punctuation.contains(this.text.charAt(endIndex))) {
             endIndex++;
         }
-        String nextWord = this.text.substring(this.charIndex, endIndex + 1);
-        this.charIndex = endIndex + 1;
+        if(endIndex == this.charIndex) endIndex++;
+
+        String nextWord = this.text.substring(this.charIndex, endIndex);
+        this.charIndex = endIndex;
         return nextWord;
     }
 

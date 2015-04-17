@@ -5,6 +5,6 @@ package rules;
  */
 public interface Rule {
 
-    public boolean isValid(String word, String abbreviation, int index);
+    public boolean isValid(String word, String abbreviation, int index, String wordTranslationSoFar);
 
 }

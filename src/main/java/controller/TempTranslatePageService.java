@@ -24,9 +24,6 @@ public class TempTranslatePageService {
                 "    $( \".myButton\" ).click(function() {\n" +
                 "      var x = encodeURIComponent($('.translate-input').val());\n" +
                 "      var grade = $('input[name=grade]:checked').val();\n" +
-                "      if(grade==2) {\n" +
-                "        alert(\"Sorry, Grade2 is under development. Grade1 might be used instead.\");\n" +
-                "      }\n" +
                 "      $.ajax({\n" +
                 "        url: \"/translateEncoded?grade=\"+grade+\"&&input=\"+x\n" +
                 "      }).then(function(data) {\n" +
@@ -103,74 +100,74 @@ public class TempTranslatePageService {
     @ResponseBody
     String translate(@RequestParam(value = "input") String input) throws UnsupportedEncodingException {
 
-        Map<String, String> mapping = new HashMap<String, String>();
-        mapping.put("1","⠁");
-        mapping.put("2","⠂");
-        mapping.put("12","⠃");
-        mapping.put("3","⠄");
-        mapping.put("13","⠅");
-        mapping.put("23","⠆");
-        mapping.put("123","⠇");
-        mapping.put("4","⠈");
-        mapping.put("14","⠉");
-        mapping.put("24","⠊");
-        mapping.put("124","⠋");
-        mapping.put("34","⠌");
-        mapping.put("134","⠍");
-        mapping.put("234","⠎");
-        mapping.put("1234","⠏");
-        mapping.put("5","⠐");
-        mapping.put("15","⠑");
-        mapping.put("25","⠒");
-        mapping.put("125","⠓");
-        mapping.put("35","⠔");
-        mapping.put("135","⠕");
-        mapping.put("235","⠖");
-        mapping.put("1235","⠗");
-        mapping.put("45","⠘");
-        mapping.put("145","⠙");
-        mapping.put("245","⠚");
-        mapping.put("1245","⠛");
-        mapping.put("345","⠜");
-        mapping.put("1345","⠝");
-        mapping.put("2345","⠞");
-        mapping.put("12345","⠟");
-        mapping.put("6","⠠");
-        mapping.put("16","⠡");
-        mapping.put("26","⠢");
-        mapping.put("126","⠣");
-        mapping.put("36","⠤");
-        mapping.put("136","⠥");
-        mapping.put("236","⠦");
-        mapping.put("1236","⠧");
-        mapping.put("46","⠨");
-        mapping.put("146","⠩");
-        mapping.put("246","⠪");
-        mapping.put("1246","⠫");
-        mapping.put("346","⠬");
-        mapping.put("1346","⠭");
-        mapping.put("2346","⠮");
-        mapping.put("12346","⠯");
-        mapping.put("56","⠰");
-        mapping.put("156","⠱");
-        mapping.put("256","⠲");
-        mapping.put("1256","⠳");
-        mapping.put("356","⠴");
-        mapping.put("1356","⠵");
-        mapping.put("2356","⠶");
-        mapping.put("12356","⠷");
-        mapping.put("456","⠸");
-        mapping.put("1456","⠹");
-        mapping.put("2456","⠺");
-        mapping.put("12456","⠻");
-        mapping.put("3456","⠼");
-        mapping.put("13456","⠽");
-        mapping.put("23456","⠾");
-        mapping.put("123456","⠿");
+        Map<String, String> brailleSymbolMapping = new HashMap<String, String>();
+        brailleSymbolMapping.put("1","⠁");
+        brailleSymbolMapping.put("2","⠂");
+        brailleSymbolMapping.put("12","⠃");
+        brailleSymbolMapping.put("3","⠄");
+        brailleSymbolMapping.put("13","⠅");
+        brailleSymbolMapping.put("23","⠆");
+        brailleSymbolMapping.put("123","⠇");
+        brailleSymbolMapping.put("4","⠈");
+        brailleSymbolMapping.put("14","⠉");
+        brailleSymbolMapping.put("24","⠊");
+        brailleSymbolMapping.put("124","⠋");
+        brailleSymbolMapping.put("34","⠌");
+        brailleSymbolMapping.put("134","⠍");
+        brailleSymbolMapping.put("234","⠎");
+        brailleSymbolMapping.put("1234","⠏");
+        brailleSymbolMapping.put("5","⠐");
+        brailleSymbolMapping.put("15","⠑");
+        brailleSymbolMapping.put("25","⠒");
+        brailleSymbolMapping.put("125","⠓");
+        brailleSymbolMapping.put("35","⠔");
+        brailleSymbolMapping.put("135","⠕");
+        brailleSymbolMapping.put("235","⠖");
+        brailleSymbolMapping.put("1235","⠗");
+        brailleSymbolMapping.put("45","⠘");
+        brailleSymbolMapping.put("145","⠙");
+        brailleSymbolMapping.put("245","⠚");
+        brailleSymbolMapping.put("1245","⠛");
+        brailleSymbolMapping.put("345","⠜");
+        brailleSymbolMapping.put("1345","⠝");
+        brailleSymbolMapping.put("2345","⠞");
+        brailleSymbolMapping.put("12345","⠟");
+        brailleSymbolMapping.put("6","⠠");
+        brailleSymbolMapping.put("16","⠡");
+        brailleSymbolMapping.put("26","⠢");
+        brailleSymbolMapping.put("126","⠣");
+        brailleSymbolMapping.put("36","⠤");
+        brailleSymbolMapping.put("136","⠥");
+        brailleSymbolMapping.put("236","⠦");
+        brailleSymbolMapping.put("1236","⠧");
+        brailleSymbolMapping.put("46","⠨");
+        brailleSymbolMapping.put("146","⠩");
+        brailleSymbolMapping.put("246","⠪");
+        brailleSymbolMapping.put("1246","⠫");
+        brailleSymbolMapping.put("346","⠬");
+        brailleSymbolMapping.put("1346","⠭");
+        brailleSymbolMapping.put("2346","⠮");
+        brailleSymbolMapping.put("12346","⠯");
+        brailleSymbolMapping.put("56","⠰");
+        brailleSymbolMapping.put("156","⠱");
+        brailleSymbolMapping.put("256","⠲");
+        brailleSymbolMapping.put("1256","⠳");
+        brailleSymbolMapping.put("356","⠴");
+        brailleSymbolMapping.put("1356","⠵");
+        brailleSymbolMapping.put("2356","⠶");
+        brailleSymbolMapping.put("12356","⠷");
+        brailleSymbolMapping.put("456","⠸");
+        brailleSymbolMapping.put("1456","⠹");
+        brailleSymbolMapping.put("2456","⠺");
+        brailleSymbolMapping.put("12456","⠻");
+        brailleSymbolMapping.put("3456","⠼");
+        brailleSymbolMapping.put("13456","⠽");
+        brailleSymbolMapping.put("23456","⠾");
+        brailleSymbolMapping.put("123456","⠿");
 
         String output = "";
         for(String symbol : input.split(","))
-            output += mapping.get(symbol);
+            output += brailleSymbolMapping.get(symbol);
 
         return output;
     }

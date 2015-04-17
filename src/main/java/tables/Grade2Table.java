@@ -1,5 +1,7 @@
 package tables;
 
+import rules.*;
+
 import java.util.*;
 
 /**
@@ -14,8 +16,8 @@ public class Grade2Table {
     static{
         grade2Table = new HashSet<Grade2Abbreviation>();
 
-        grade2Table.add(new Grade2Abbreviation().setWord("أو").setSymbol("⠁"));
-        grade2Table.add(new Grade2Abbreviation().setWord("بل").setSymbol("⠃"));
+        grade2Table.add(new Grade2Abbreviation().setWord("أو").setSymbol("⠁").addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("بل").setSymbol("⠃").addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("برمج").setSymbol("⠈⠃"));
         grade2Table.add(new Grade2Abbreviation().setWord("بعد").setSymbol("⠐⠃"));
         grade2Table.add(new Grade2Abbreviation().setWord("بعيد").setSymbol("⠘⠃"));
@@ -25,7 +27,7 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("تحت").setSymbol("⠐⠞"));
         grade2Table.add(new Grade2Abbreviation().setWord("تدريب").setSymbol("⠘⠞"));
         grade2Table.add(new Grade2Abbreviation().setWord("تدريج").setSymbol("⠸⠞"));
-        grade2Table.add(new Grade2Abbreviation().setWord("ثم").setSymbol("⠹"));
+        grade2Table.add(new Grade2Abbreviation().setWord("ثم").setSymbol("⠹").addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("ثقاف").setSymbol("⠈⠹"));
         grade2Table.add(new Grade2Abbreviation().setWord("أثناء").setSymbol("⠐⠹"));
         grade2Table.add(new Grade2Abbreviation().setWord("ثاني").setSymbol("⠘⠹"));
@@ -35,7 +37,7 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("جميع").setSymbol("⠐⠚"));
         grade2Table.add(new Grade2Abbreviation().setWord("جانب").setSymbol("⠘⠚"));
         grade2Table.add(new Grade2Abbreviation().setWord("جعل").setSymbol("⠸⠚"));
-        grade2Table.add(new Grade2Abbreviation().setWord("حتى").setSymbol("⠱"));
+        grade2Table.add(new Grade2Abbreviation().setWord("حتى").setSymbol("⠱").addRule(new NoObjectPronouns()));
         grade2Table.add(new Grade2Abbreviation().setWord("أحيان").setSymbol("⠈⠱"));
         grade2Table.add(new Grade2Abbreviation().setWord("حياة").setSymbol("⠐⠱"));
         grade2Table.add(new Grade2Abbreviation().setWord("حقيق").setSymbol("⠘⠱"));
@@ -95,7 +97,7 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("ظاهر").setSymbol("⠐⠿"));
         grade2Table.add(new Grade2Abbreviation().setWord("ظروف").setSymbol("⠘⠿"));
         grade2Table.add(new Grade2Abbreviation().setWord("ظهور").setSymbol("⠸⠿"));
-        grade2Table.add(new Grade2Abbreviation().setWord("عسى").setSymbol("⠷"));
+        grade2Table.add(new Grade2Abbreviation().setWord("عسى").setSymbol("⠷").addRule(new NoObjectPronouns()));
         grade2Table.add(new Grade2Abbreviation().setWord("عادة").setSymbol("⠈⠷"));
         grade2Table.add(new Grade2Abbreviation().setWord("عزيز").setSymbol("⠐⠷"));
         grade2Table.add(new Grade2Abbreviation().setWord("عبارة").setSymbol("⠘⠷"));
@@ -128,7 +130,7 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("مثل").setSymbol("⠍"));
         grade2Table.add(new Grade2Abbreviation().setWord("مكفوف").setSymbol("⠈⠍"));
         grade2Table.add(new Grade2Abbreviation().setWord("مرة").setSymbol("⠐⠍"));
-        grade2Table.add(new Grade2Abbreviation().setWord("معنى").setSymbol("⠘⠍"));
+        grade2Table.add(new Grade2Abbreviation().setWord("معنى").setSymbol("⠘⠍").addRule(new NoObjectPronouns()));
         grade2Table.add(new Grade2Abbreviation().setWord("معظم").setSymbol("⠸⠍"));
         grade2Table.add(new Grade2Abbreviation().setWord("نحو").setSymbol("⠝"));
         grade2Table.add(new Grade2Abbreviation().setWord("ناسب").setSymbol("⠈⠝"));
@@ -154,20 +156,20 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("أيام").setSymbol("⠐⠊"));
         grade2Table.add(new Grade2Abbreviation().setWord("يمكن").setSymbol("⠘⠊"));
         grade2Table.add(new Grade2Abbreviation().setWord("يقول").setSymbol("⠸⠊"));
-        grade2Table.add(new Grade2Abbreviation().setWord("على").setSymbol("⠕"));
-        grade2Table.add(new Grade2Abbreviation().setWord("أعلى").setSymbol("⠐⠕"));
-        grade2Table.add(new Grade2Abbreviation().setWord("أولى").setSymbol("⠠⠕"));
-        grade2Table.add(new Grade2Abbreviation().setWord("أدنى").setSymbol("⠠⠕"));
-        grade2Table.add(new Grade2Abbreviation().setWord("أخرى").setSymbol("⠘⠕"));
-        grade2Table.add(new Grade2Abbreviation().setWord("أغنى").setSymbol("⠰⠕"));
-        grade2Table.add(new Grade2Abbreviation().setWord("أقصى").setSymbol("⠸⠕"));
+        grade2Table.add(new Grade2Abbreviation().setWord("على").setSymbol("⠕").addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("أعلى").setSymbol("⠐⠕").addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("أولى").setSymbol("⠠⠕").addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("أدنى").setSymbol("⠠⠕").addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("أخرى").setSymbol("⠘⠕").addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("أغنى").setSymbol("⠰⠕").addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("أقصى").setSymbol("⠸⠕").addRule(new NoObjectPronouns()));
         grade2Table.add(new Grade2Abbreviation().setWord("قبل").setSymbol("⠡"));
         grade2Table.add(new Grade2Abbreviation().setWord("جملة").setSymbol("⠈⠡"));
         grade2Table.add(new Grade2Abbreviation().setWord("ساعة").setSymbol("⠐⠡"));
         grade2Table.add(new Grade2Abbreviation().setWord("تارة").setSymbol("⠘⠡"));
         grade2Table.add(new Grade2Abbreviation().setWord("تربية").setSymbol("⠰⠡"));
         grade2Table.add(new Grade2Abbreviation().setWord("لحظة").setSymbol("⠸⠡"));
-        grade2Table.add(new Grade2Abbreviation().setWord("قد").setSymbol("⠄"));
+        grade2Table.add(new Grade2Abbreviation().setWord("قد").setSymbol("⠄").addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("أسئلة").setSymbol("⠌"));
         grade2Table.add(new Grade2Abbreviation().setWord("أكبر").setSymbol("⠈⠌"));
         grade2Table.add(new Grade2Abbreviation().setWord("أحد").setSymbol("⠐⠌"));
@@ -189,36 +191,36 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("صائم").setSymbol("⠘⠽"));
         grade2Table.add(new Grade2Abbreviation().setWord("شائع").setSymbol("⠰⠽"));
         grade2Table.add(new Grade2Abbreviation().setWord("فائز").setSymbol("⠸⠽"));
-        grade2Table.add(new Grade2Abbreviation().setWord("كل").setSymbol("⠜"));
+        grade2Table.add(new Grade2Abbreviation().setWord("كل").setSymbol("⠜").addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("آداب").setSymbol("⠈⠜"));
         grade2Table.add(new Grade2Abbreviation().setWord("آراء").setSymbol("⠐⠜"));
         grade2Table.add(new Grade2Abbreviation().setWord("آفاق").setSymbol("⠠⠜"));
         grade2Table.add(new Grade2Abbreviation().setWord("آخر").setSymbol("⠘⠜"));
         grade2Table.add(new Grade2Abbreviation().setWord("آثار").setSymbol("⠰⠜"));
         grade2Table.add(new Grade2Abbreviation().setWord("أيها").setSymbol("⠸⠜"));
-        grade2Table.add(new Grade2Abbreviation().setWord("لم").setSymbol("⠑"));
+        grade2Table.add(new Grade2Abbreviation().setWord("لم").setSymbol("⠑").addRule(new Begining()).addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("لم يعد").setSymbol("⠈⠑"));
         grade2Table.add(new Grade2Abbreviation().setWord("لم يكن").setSymbol("⠐⠑"));
         grade2Table.add(new Grade2Abbreviation().setWord("لم يتمكن").setSymbol("⠠⠑"));
         grade2Table.add(new Grade2Abbreviation().setWord("لم يلبث").setSymbol("⠘⠑"));
         grade2Table.add(new Grade2Abbreviation().setWord("لم يستطع").setSymbol("⠰⠑"));
         grade2Table.add(new Grade2Abbreviation().setWord("لم يزل").setSymbol("⠸⠑"));
-        grade2Table.add(new Grade2Abbreviation().setWord("حيث").setSymbol("⠥"));
+        grade2Table.add(new Grade2Abbreviation().setWord("حيث").setSymbol("⠥").addRule(new Begining()).addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("حقوق").setSymbol("⠈⠥"));
         grade2Table.add(new Grade2Abbreviation().setWord("حاسب").setSymbol("⠐⠥"));
         grade2Table.add(new Grade2Abbreviation().setWord("حاسوب").setSymbol("⠠⠥"));
         grade2Table.add(new Grade2Abbreviation().setWord("حروف").setSymbol("⠘⠥"));
         grade2Table.add(new Grade2Abbreviation().setWord("حدود").setSymbol("⠰⠥"));
         grade2Table.add(new Grade2Abbreviation().setWord("دنيا").setSymbol("⠸⠥"));
-        grade2Table.add(new Grade2Abbreviation().setWord("مع").setSymbol("⠆"));
-        grade2Table.add(new Grade2Abbreviation().setWord("عن").setSymbol("⠔"));
-        grade2Table.add(new Grade2Abbreviation().setWord("إلى").setSymbol("⠢"));
-        grade2Table.add(new Grade2Abbreviation().setWord("لل").setSymbol("⠒"));
-        grade2Table.add(new Grade2Abbreviation().setWord("ست").setSymbol("⠲"));
-        grade2Table.add(new Grade2Abbreviation().setWord("في").setSymbol("⠖"));
-        grade2Table.add(new Grade2Abbreviation().setWord("هو").setSymbol("⠦"));
-        grade2Table.add(new Grade2Abbreviation().setWord("من").setSymbol("⠴"));
-        grade2Table.add(new Grade2Abbreviation().setWord("متى").setSymbol("⠶"));
+        grade2Table.add(new Grade2Abbreviation().setWord("مع").setSymbol("⠆").addRule(new Begining()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("عن").setSymbol("⠔").addRule(new Begining()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("إلى").setSymbol("⠢").addRule(new Begining()).addRule(new Separate()).addRule(new NoObjectPronouns()));
+        grade2Table.add(new Grade2Abbreviation().setWord("لل").setSymbol("⠒").addRule(new Begining()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("ست").setSymbol("⠲").addRule(new Begining()).addRule(new Middle()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("في").setSymbol("⠖").addRule(new Begining()).addRule(new Middle()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("هو").setSymbol("⠦").addRule(new Middle()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("من").setSymbol("⠴").addRule(new Begining()).addRule(new Middle()).addRule(new Separate()));
+        grade2Table.add(new Grade2Abbreviation().setWord("متى").setSymbol("⠶").addRule(new Middle()).addRule(new Separate()));
         grade2Table.add(new Grade2Abbreviation().setWord("ال").setSymbol("⠉"));
         grade2Table.add(new Grade2Abbreviation().setWord("اللائي").setSymbol("⠈⠉"));
         grade2Table.add(new Grade2Abbreviation().setWord("الذي").setSymbol("⠐⠉"));
@@ -261,11 +263,11 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("ينبغي").setSymbol("⠘⠬"));
         grade2Table.add(new Grade2Abbreviation().setWord("ينتشر").setSymbol("⠰⠬"));
         grade2Table.add(new Grade2Abbreviation().setWord("يندرج").setSymbol("⠸⠬"));
-        grade2Table.add(new Grade2Abbreviation().setWord("وا").setSymbol("⠼"));
+        grade2Table.add(new Grade2Abbreviation().setWord("وا").setSymbol("⠼").addRule(new Ending()));
         grade2Table.add(new Grade2Abbreviation().setWord("وأما").setSymbol("⠼"));
-        grade2Table.add(new Grade2Abbreviation().setWord("ية").setSymbol("⠘"));
-        grade2Table.add(new Grade2Abbreviation().setWord("ات").setSymbol("⠨"));
-        grade2Table.add(new Grade2Abbreviation().setWord("ون").setSymbol("⠸"));
+        grade2Table.add(new Grade2Abbreviation().setWord("ية").setSymbol("⠘").addRule(new EndingAndNo123SymbolBefore()));
+        grade2Table.add(new Grade2Abbreviation().setWord("ات").setSymbol("⠨").addRule(new EndingAndNo123SymbolBefore()));
+        grade2Table.add(new Grade2Abbreviation().setWord("ون").setSymbol("⠸").addRule(new EndingAndNo123SymbolBefore()));
 
     }
 

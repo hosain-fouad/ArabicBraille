@@ -2,6 +2,7 @@ package tables;
 
 import rules.Rule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class Grade2Abbreviation {
 
-    private List<Rule> rules;
+    private List<Rule> rules = new ArrayList<Rule>();
     private String symbol;
     private String word;
 

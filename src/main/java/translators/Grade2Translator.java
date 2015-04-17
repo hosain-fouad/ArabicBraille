@@ -25,7 +25,16 @@ public class Grade2Translator extends Translator{
 
         Iterator<String> wordIterator = new WordIterator(input);
         while(wordIterator.hasNext()){
-            sb.append(translateWord(wordIterator.next()));
+            String word = wordIterator.next();
+            if(word.endsWith("ما") || word.endsWith("لم")) {
+                if(wordIterator.hasNext()){
+                    word += wordIterator.next();
+                    if(wordIterator.hasNext()){
+                        word += wordIterator.next();
+                    }
+                }
+            }
+            sb.append(translateWord(word));
         }
 
         return sb.toString();
@@ -50,15 +59,19 @@ public class Grade2Translator extends Translator{
                 if(abbreviation.getRules().size() > 0) {
                     success = false;
                     for (Rule rule : abbreviation.getRules()) {
-                        if (rule.isValid(word, abbreviation.getWord(), index)) {
+                        if (rule.isValid(word, abbreviation.getWord(), index, sb.toString())) {
                             success = true;
                             break;
                         }
                     }
                 }
                 if (success) {
-                    index = index + abbreviation.getWord().length();
+                    if(abbreviation.getWord().length() > 2 && (index > 0 || index+abbreviation.getWord().length() < word.length()) && !abbreviation.getWord().equals("كان")) {
+                        sb.append("⠤");
+                    }
                     sb.append(abbreviation.getSymbol());
+
+                    index = index + abbreviation.getWord().length();
                     continue;
                 }
             }

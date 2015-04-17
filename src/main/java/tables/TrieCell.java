@@ -1,12 +1,13 @@
 package tables;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by hosainfathelbab on 4/6/15.
  */
 public class TrieCell {
-    private Map<Character, TrieCell> children = null;
+    private Map<Character, TrieCell> children = new HashMap<Character, TrieCell>();
     private Grade2Abbreviation abbreviation = null;
 
     public Map<Character, TrieCell> getChildren() {
