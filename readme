@@ -2,10 +2,11 @@ Online Translation api that translate arabic into Braille.
 
 Todo:
 New Features:
-- support Braille grade2
+-[Done] support Braille grade2
+- handle the Tashkeel in grade 2
 
 Cleaning:
-- use java.util.logging instead of logging in the console print lines.
+- use java.util.logging to log important info (ex: unrecognized chars).
 
 Note:
 This project was created from the samples in
