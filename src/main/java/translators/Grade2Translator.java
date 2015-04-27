@@ -112,7 +112,7 @@ public class Grade2Translator extends Translator {
                 }
                 if (success) {
                     if (abbreviation.getWord().length() > 2 && (index > 0 || index + abbreviatedWordWithTashkeel.length() < word.length()) && !abbreviation.getWord().equals("كان")) {
-                        sb.append("⠤");
+                        sb.append( "⠤" );
                     }
                     sb.append(abbreviation.getSymbol());
 
