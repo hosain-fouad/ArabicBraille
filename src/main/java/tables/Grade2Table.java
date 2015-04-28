@@ -268,6 +268,7 @@ public class Grade2Table {
         grade2Table.add(new Grade2Abbreviation().setWord("ية").setSymbol("⠘").addRule(new EndingAndNo123SymbolBefore()));
         grade2Table.add(new Grade2Abbreviation().setWord("ات").setSymbol("⠨").addRule(new EndingAndNo123SymbolBefore()));
         grade2Table.add(new Grade2Abbreviation().setWord("ون").setSymbol("⠸").addRule(new EndingAndNo123SymbolBefore()));
+        grade2Table.add(new Grade2Abbreviation().setWord("لا").setSymbol("⠧").addRule(new La()));
 
     }
 

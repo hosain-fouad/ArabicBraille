@@ -3,6 +3,7 @@ controller/TranslationService.class
 cfg/WebConfig.class
 translators/Grade1Translator.class
 rules/Rule.class
+rules/La.class
 tables/Grade2Table.class
 translators/Grade2Translator.class
 utils/grade2/Constants.class
@@ -17,8 +18,8 @@ utils/grade2/WordIterator.class
 rules/NoObjectPronouns.class
 rules/Middle.class
 controller/TempTranslatePageService.class
-tables/Grade1Map.class
 utils/grade2/Hyphenation.class
+tables/Grade1Map.class
 tables/TrieCell.class
 rules/Ending.class
 rules/Separate.class
