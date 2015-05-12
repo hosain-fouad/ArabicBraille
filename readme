@@ -11,6 +11,7 @@ Better to have:
 
 Cleaning:
   - use java.util.logging to log important info (ex: unrecognized chars).
+  - more documentation.
 
 Note:
 This project was created from the samples in
