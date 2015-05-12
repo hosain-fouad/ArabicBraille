@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * Created by hosainfathelbab on 4/4/15.
+ * each abbreviation for grade two can have zero or more rules associated to it.
+ * so while translation, if the abbreviation appeared that doesn't mean it must be used,
+ * but instead the rules should be verified and if passed then use the abbreviation for the translation.
  */
 public class Grade2Abbreviation {
 

@@ -4,6 +4,10 @@ import utils.grade2.Constants;
 
 /**
  * Created by hosainfathelbab on 4/6/15.
+ * This Trie is being constructed once when the application starts.
+ * It is a singleton class that when called for the first time it will construct the trie.
+ * It build a trie representation that contains all the abbriviations for Braille grade 2.
+ * This trie will be used to extract possible abbriviations from words.
  */
 public class Trie {
     private TrieCell root;
@@ -16,6 +20,9 @@ public class Trie {
         constructBraille2Trie();
     }
 
+    /*
+    * build the trie
+    */
     public void constructBraille2Trie(){
         root = new TrieCell();
         for(Grade2Abbreviation abbreviation: Grade2Table.getTable()){
@@ -39,6 +46,9 @@ public class Trie {
         currentCell.setAbbreviation(abbreviation);
     }
 
+    /*
+    * get longest match grade 2 abbreviation. It deosn't work with words that has tashkeel, use "getLongestMatchAbbreviationWithTashkeel" instead.
+    */
     public Grade2Abbreviation getLongestMatchAbbreviation(String input, int index) {
         char[] chars = input.toCharArray();
         Grade2Abbreviation longestAbbreviation = null;
@@ -58,6 +68,9 @@ public class Trie {
         return longestAbbreviation;
     }
 
+    /*
+    * get longest match grade 2 abbreviation while taking care that the word may or maynot have tashkeel.
+    */
     public Grade2Abbreviation getLongestMatchAbbreviationWithTashkeel(String input, int index) {
         char[] chars = input.toCharArray();
         Grade2Abbreviation longestAbbreviation = null;

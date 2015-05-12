@@ -2,6 +2,7 @@ package rules;
 
 /**
  * Created by hosainfathelbab on 4/7/15.
+ * This rules validates that the abbreviations appears at the beginning of the word.
  */
 public class Begining implements Rule {
     @Override

@@ -2,6 +2,7 @@ package rules;
 
 /**
  * Created by hosainfathelbab on 4/7/15.
+ * This rules validates that the abbreviations appears at the middle of the word.
  */
 public class Middle implements Rule {
     @Override
