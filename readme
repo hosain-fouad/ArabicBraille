@@ -4,7 +4,7 @@ Todo:
 New Features:
   -[Done] support Braille grade2
   -[Done] handle KSA Tashkeel style in grade 2
-  - handle Egyptain tashkeel style in grade 2
+  - handle Egyptain tashkeel style in grade 2, put the tashkeel on top of the char.
 
 Better to have:
   - change the way of getting the translation input as a stream instead of one string input cause in the future 
