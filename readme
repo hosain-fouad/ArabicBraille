@@ -13,6 +13,7 @@ Better to have:
 Cleaning:
   - use java.util.logging to log important info (ex: unrecognized chars).
   - more documentation.
+  - constants for spacing and special chars.
 
 Note:
 This project was created from the samples in
