@@ -15,7 +15,6 @@ public class Constants {
     public static Map<String, String> brailleSymbolMapping = new HashMap<String, String>(63);
     public static Map<String, String> brailleSymbolReverseMapping = new HashMap<String, String>(63);
 
-
     static {
         tashkeel.add('َ');
         tashkeel.add('ِ');

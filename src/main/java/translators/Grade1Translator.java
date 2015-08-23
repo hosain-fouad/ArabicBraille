@@ -2,6 +2,8 @@ package translators;
 
 import org.springframework.stereotype.Repository;
 import tables.Grade1Map;
+import utils.grade2.Constants;
+import utils.grade2.Tashkeel;
 import utils.grade2.WordIterator;
 
 import java.util.HashMap;
@@ -28,6 +30,19 @@ public class Grade1Translator extends Translator{
 
     }
 
+    @Override
+    public TranslationResult translate(String input, Tashkeel tashkeel) {
+        TranslationResult tr = new TranslationResult(tashkeel);
+
+        Iterator<String> wordIterator = new WordIterator(input);
+        while (wordIterator.hasNext()) {
+            String word = wordIterator.next();
+            tr.append(translateWordWithTashkeel(word, tashkeel));
+        }
+
+        return tr;
+    }
+
     private String translateWord(String word) {
         HashMap<Character, String> table = Grade1Map.table;
         StringBuffer sb = new StringBuffer();
@@ -49,6 +64,36 @@ public class Grade1Translator extends Translator{
         }
 
         return sb.toString();
+    }
+
+    private TranslationResult translateWordWithTashkeel(String word, Tashkeel tashkeel) {
+        HashMap<Character, String> table = Grade1Map.table;
+        TranslationResult tr = new TranslationResult(tashkeel);
+
+        word = handleSpecialCases(word);
+
+        char[] chars = word.toCharArray();
+
+        for (int i=0; i<chars.length; i++) {
+            char c = chars[i];
+            if (table.containsKey(c)) {
+                if(isNumber(c) && (i == 0 || !isNumber(chars[i-1]))){
+                    tr.append("⠼");
+                }
+
+                if(Constants.tashkeel.contains(c)) {
+                    tr.appendTashkeel(table.get(c));
+                }
+                else {
+                    tr.append(table.get(c));
+                }
+
+            } else {
+                tr.append(c + "");
+            }
+        }
+
+        return tr;
     }
 
     private String handleSpecialCases(String word) {

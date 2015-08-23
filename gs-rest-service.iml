@@ -63,6 +63,7 @@
     <orderEntry type="library" name="Maven: jfree:jfreechart:1.0.12" level="project" />
     <orderEntry type="library" name="Maven: jfree:jcommon:1.0.15" level="project" />
     <orderEntry type="library" name="Maven: org.swinglabs:pdf-renderer:1.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
   </component>
 </module>
 
