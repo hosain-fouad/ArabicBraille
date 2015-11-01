@@ -27,17 +27,17 @@ public class TranslationService {
     public
     @ResponseBody
     String translate(@RequestParam(value = "input") String input, @RequestParam(value = "grade") String grade) throws UnsupportedEncodingException {
-        String translation = "";
+        TranslationResult translation = null;
         switch (Integer.parseInt(grade)){
             case 1:
-                translation = grade1Translator.translate(input);
+                translation = grade1Translator.translate(input, Tashkeel.ksa);
                 break;
             case 2:
-                translation = grade2Translator.translate(input);
+                translation = grade2Translator.translate(input, Tashkeel.ksa);
                 break;
         }
 
-        return translation;
+        return translation.toString();
     }
 
     @RequestMapping(value = "/translateEncoded", produces = "text/html; charset=UTF-8")
@@ -48,28 +48,4 @@ public class TranslationService {
         return translate(input, grade);
     }
 
-    @RequestMapping(value = "/translateWithTashkeel", produces = "text/html; charset=UTF-8")
-    public
-    @ResponseBody
-    String translate(@RequestParam(value = "input") String input, @RequestParam(value = "grade") String grade, @RequestParam(value = "tashkeel") Tashkeel tashkeel) throws UnsupportedEncodingException {
-        TranslationResult translation = null;
-        switch (Integer.parseInt(grade)){
-            case 1:
-                translation = grade1Translator.translate(input, tashkeel);
-                break;
-            case 2:
-                translation = grade2Translator.translate(input, tashkeel);
-                break;
-        }
-
-        return translation.toString();
-    }
-
-    @RequestMapping(value = "/translateEncodedWithTashkeel", produces = "text/html; charset=UTF-8")
-    public
-    @ResponseBody
-    String translateEnocoded(@RequestParam(value = "input") String input, @RequestParam(value = "grade") String grade, @RequestParam(value = "tashkeel") Tashkeel tashkeel) throws UnsupportedEncodingException {
-        input = decode(input, "ASCII");
-        return translate(input, grade, tashkeel);
-    }
 }

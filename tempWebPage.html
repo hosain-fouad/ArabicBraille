@@ -7,7 +7,7 @@
       var grade = $('input[name=grade]:checked').val();
       var tashkeel = $('input[name=tashkeel]:checked').val();
       $.ajax({
-        url: "/translateEncodedWithTashkeel?grade="+grade+"&&input="+x+"&&tashkeel="+tashkeel
+        url: "/translateEncoded?grade="+grade+"&&input="+x
       }).then(function(data) {
         $('.translate-output').html(data).text();
       });
@@ -37,11 +37,12 @@
         <tr>
             <td></td>
             <td></td>
-            <td></td>
             <td><button class="downloadIt" style="float: right;" >Download translation as .rtf</button></td>
         </tr>
         <tr>
             <td>
+            </td>
+            <td align="center">
                 <table>
                     <tr>
                         <td>
@@ -57,23 +58,8 @@
                                 </table>
                             </div>
                         </td>
-                        <td>
-                            <div>
-                                <table border=1>
-                                    <th>Tashkeel Type</th>
-                                    <tr>
-                                        <td>
-                                            <input type="radio" name="tashkeel" value="ksa" checked>Saudi Arabia <br/>
-                                            <input type="radio" name="tashkeel" value="egypt">Egypt
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
                     </tr>
                 </table>
-            </td>
-            <td align="center">
                 <button class="myButton">Translate</button>
             </td>
             <td></td>
@@ -82,12 +68,15 @@
 
 
     <style type="text/css">
+        body{
+           background-color: rgb(236, 237, 238);
+        }
         textarea {
         margin: 0px;
         width: 421px;
         height: 113px;
         border: 2px solid #32409E;
-        border-radius: 10px;
+        border-radius: 2px;
         font-size: 1em;
         }
         .translate-output {
@@ -100,6 +89,7 @@
         .myButton {
         width: 120px;
         height: 30px;
+        background-color: rgb(250, 250, 214);
         }
     </style>
 </div>

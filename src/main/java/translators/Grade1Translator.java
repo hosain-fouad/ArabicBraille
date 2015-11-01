@@ -5,7 +5,6 @@ import tables.Grade1Map;
 import utils.grade2.Constants;
 import utils.grade2.Tashkeel;
 import utils.grade2.WordIterator;
-
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -14,21 +13,6 @@ import java.util.Iterator;
  */
 @Repository(value = "grade1Translator")
 public class Grade1Translator extends Translator{
-
-    @Override
-    public String translate(String input) {
-
-        StringBuffer sb = new StringBuffer();
-
-        Iterator<String> wordIterator = new WordIterator(input);
-        while (wordIterator.hasNext()) {
-            String word = wordIterator.next();
-            sb.append(translateWord(word));
-        }
-
-        return sb.toString();
-
-    }
 
     @Override
     public TranslationResult translate(String input, Tashkeel tashkeel) {
@@ -41,45 +25,6 @@ public class Grade1Translator extends Translator{
         }
 
         return tr;
-    }
-
-    private String translateWord(String word) {
-        HashMap<Character, String> table = Grade1Map.table;
-        StringBuffer sb = new StringBuffer();
-
-        word = handleSpecialCases(word);
-
-        char[] chars = word.toCharArray();
-
-        for (int i=0; i<chars.length; i++) {
-            char c = chars[i];
-            if (table.containsKey(c)) {
-                if(isNumber(c) && (i == 0 || !isNumber(chars[i-1]))){
-                    sb.append("⠼");
-                }
-
-                // handle the Shadda case
-                if(c == Constants.SHADDA) {
-                    int backTrackIndex = i-1;
-                    while(backTrackIndex >= 0) {
-                        if(!Constants.tashkeel.contains(chars[backTrackIndex])) {
-                            int startReplaceIndex = sb.length() - ( i - backTrackIndex );
-                            String newTranslationWithShadda = table.get(c) + sb.substring(startReplaceIndex);
-                            sb.replace(startReplaceIndex, sb.length(), newTranslationWithShadda);
-                        }
-                        backTrackIndex--;
-                    }
-                }
-                else {
-                    sb.append(table.get(c));
-                }
-
-            } else {
-                sb.append(c);
-            }
-        }
-
-        return sb.toString();
     }
 
     private TranslationResult translateWordWithTashkeel(String word, Tashkeel tashkeel) {
@@ -99,16 +44,7 @@ public class Grade1Translator extends Translator{
 
                 // handle the Shadda case
                 if(c == Constants.SHADDA) {
-                    int backTrackIndex = i-1;
-                    while(backTrackIndex >= 0) {
-                        if(!Constants.tashkeel.contains(chars[backTrackIndex])) {
-                            StringBuffer sb = tr.getSecondLine();
-                            int startReplaceIndex = sb.length() - ( i - backTrackIndex );
-                            String newTranslationWithShadda = table.get(c) + sb.substring(startReplaceIndex);
-                            sb.replace(startReplaceIndex, sb.length(), newTranslationWithShadda);
-                        }
-                        backTrackIndex--;
-                    }
+                    handleShaddaCase(word, i, tr);
                 }
                 else {
                     tr.append(table.get(c));
@@ -135,6 +71,23 @@ public class Grade1Translator extends Translator{
         }
 
         return word;
+    }
+
+    /**
+     * works only with KSA tashkeel for now.
+     * TODO: need to be updated if we are going to handle Egypt Tashkeel for Qura'n
+     */
+    private void handleShaddaCase(String word, int shaddaIndex, TranslationResult currentTR) {
+        int backTrackIndex = shaddaIndex-1;
+        while(backTrackIndex >= 0) {
+            if(!Constants.tashkeel.contains(word.toCharArray()[backTrackIndex])) {
+                StringBuffer sb = currentTR.getSecondLine();
+                int startReplaceIndex = sb.length() - ( shaddaIndex - backTrackIndex );
+                String newTranslationWithShadda = Grade1Map.table.get(Constants.SHADDA) + sb.substring(startReplaceIndex);
+                sb.replace(startReplaceIndex, sb.length(), newTranslationWithShadda);
+            }
+            backTrackIndex--;
+        }
     }
 
     private boolean isNumber(char c){
