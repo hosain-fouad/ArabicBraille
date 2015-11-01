@@ -76,6 +76,9 @@ public class Grade2Translator extends Translator {
                     index = index + abbreviatedWordWithTashkeel.length();
                     lastAbbriviatedIndex = index;
                 }
+                else {
+                    index++;
+                }
             }
             else {
                 index++;
