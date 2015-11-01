@@ -2,6 +2,7 @@ package translators;
 
 import org.springframework.stereotype.Repository;
 import tables.Grade1Map;
+import utils.grade2.Constants;
 import utils.grade2.WordIterator;
 
 import java.util.HashMap;
@@ -42,7 +43,23 @@ public class Grade1Translator extends Translator{
                 if(isNumber(c) && (i == 0 || !isNumber(chars[i-1]))){
                     sb.append("⠼");
                 }
-                sb.append(table.get(c));
+
+                // handle the Shadda case
+                if(c == Constants.SHADDA) {
+                    int backTrackIndex = i-1;
+                    while(backTrackIndex >= 0) {
+                        if(!Constants.tashkeel.contains(chars[backTrackIndex])) {
+                            int startReplaceIndex = sb.length() - ( i - backTrackIndex ) - 1;
+                            String newTranslationWithShadda = table.get(c) + sb.substring(startReplaceIndex);
+                            sb.replace(startReplaceIndex, sb.length(), newTranslationWithShadda);
+                        }
+                        backTrackIndex--;
+                    }
+                }
+                else {
+                    sb.append(table.get(c));
+                }
+
             } else {
                 sb.append(c);
             }

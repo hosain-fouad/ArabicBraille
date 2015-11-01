@@ -9,12 +9,12 @@ import java.util.Set;
  * Created by hosainfathelbab on 4/11/15.
  */
 public class Constants {
-    public static Set<Character> punctuation = new HashSet<Character>();
-    public static Set<Character> tashkeel = new HashSet<Character>();
-    public static Set<String> objectPronouns = new HashSet<String>();
-    public static Map<String, String> brailleSymbolMapping = new HashMap<String, String>(63);
-    public static Map<String, String> brailleSymbolReverseMapping = new HashMap<String, String>(63);
-
+    public static final Set<Character> punctuation = new HashSet<Character>();
+    public static final Set<Character> tashkeel = new HashSet<Character>();
+    public static final Set<String> objectPronouns = new HashSet<String>();
+    public static final Map<String, String> brailleSymbolMapping = new HashMap<String, String>(63);
+    public static final Map<String, String> brailleSymbolReverseMapping = new HashMap<String, String>(63);
+    public static final char SHADDA = 'ّ';
 
     static {
         tashkeel.add('َ');

@@ -87,18 +87,12 @@ public class Grade2Translator extends Translator {
     private String translateWordWithTashkeel(String word) {
         StringBuffer sb = new StringBuffer();
         int index = 0;
+        int lastAbbriviatedIndex = 0;
         while (index < word.length()) {
-
-            if (isNumber(word.charAt(index))) {
-                sb.append("⠼");
-                while (index < word.length() && isNumber(word.charAt(index))) {
-                    sb.append(Grade1Map.table.get(word.charAt(index++)));
-                }
-                continue;
-            }
-
             Grade2Abbreviation abbreviation = Trie.getInstance().getLongestMatchAbbreviationWithTashkeel(word, index);
+
             if (abbreviation != null) {
+
                 String abbreviatedWordWithTashkeel = extractAbbreviationWithTashkeel(abbreviation, word, index);
                 boolean success = true;
                 if (abbreviation.getRules().size() > 0) {
@@ -111,18 +105,28 @@ public class Grade2Translator extends Translator {
                     }
                 }
                 if (success) {
+                    if(lastAbbriviatedIndex < index) {
+                        sb.append(grade1Translator.translate(word.substring(lastAbbriviatedIndex, index)));
+                    }
+
                     if (abbreviation.getWord().length() > 2 && (index > 0 || index + abbreviatedWordWithTashkeel.length() < word.length()) && !abbreviation.getWord().equals("كان")) {
                         sb.append( "⠤" );
                     }
                     sb.append(abbreviation.getSymbol());
 
                     index = index + abbreviatedWordWithTashkeel.length();
-                    continue;
+                    lastAbbriviatedIndex = index;
                 }
             }
-            sb.append(grade1Translator.translate(word.charAt(index) + ""));
-            index++;
+            else {
+                index++;
+            }
         }
+
+        if(lastAbbriviatedIndex < word.length() && lastAbbriviatedIndex < index) {
+            sb.append(grade1Translator.translate(word.substring(lastAbbriviatedIndex, index)));
+        }
+
         return sb.toString();
     }
 
@@ -142,7 +146,7 @@ public class Grade2Translator extends Translator {
             }
             endIndex++;
         }
-        if (endIndex < word.length() - 1 && Constants.tashkeel.contains(word.charAt(endIndex))) {
+        while (endIndex < word.length() - 1 && Constants.tashkeel.contains(word.charAt(endIndex))) {
             endIndex++;
         }
         return word.substring(startIndex, endIndex);
