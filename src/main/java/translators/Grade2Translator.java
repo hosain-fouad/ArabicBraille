@@ -7,6 +7,7 @@ import tables.Grade1Map;
 import tables.Grade2Abbreviation;
 import tables.Trie;
 import utils.grade2.Constants;
+import utils.grade2.Tashkeel;
 import utils.grade2.WordIterator;
 
 import java.util.Iterator;
@@ -36,10 +37,32 @@ public class Grade2Translator extends Translator {
                     }
                 }
             }
-            sb.append(translateWordWithTashkeel(word));
+            sb.append(translateWord(word));
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public TranslationResult translate(String input, Tashkeel tashkeel) {
+
+        TranslationResult translationResult = new TranslationResult(tashkeel);
+
+        Iterator<String> wordIterator = new WordIterator(input);
+        while (wordIterator.hasNext()) {
+            String word = wordIterator.next();
+            if (word.endsWith("ما") || word.endsWith("لم")) {
+                if (wordIterator.hasNext()) {
+                    word += wordIterator.next();
+                    if (wordIterator.hasNext()) {
+                        word += wordIterator.next();
+                    }
+                }
+            }
+            translationResult.append(translateWordWithTashkeel(word, tashkeel));
+        }
+
+        return translationResult;
     }
 
     @Deprecated
@@ -84,8 +107,8 @@ public class Grade2Translator extends Translator {
         return sb.toString();
     }
 
-    private String translateWordWithTashkeel(String word) {
-        StringBuffer sb = new StringBuffer();
+    private TranslationResult translateWordWithTashkeel(String word, Tashkeel tashkeel) {
+        TranslationResult tr = new TranslationResult(tashkeel);
         int index = 0;
         int lastAbbriviatedIndex = 0;
         while (index < word.length()) {
@@ -98,7 +121,7 @@ public class Grade2Translator extends Translator {
                 if (abbreviation.getRules().size() > 0) {
                     success = false;
                     for (Rule rule : abbreviation.getRules()) {
-                        if (rule.isValid(word, abbreviatedWordWithTashkeel, index, sb.toString())) {
+                        if (rule.isValid(word, abbreviatedWordWithTashkeel, index, tr.toString())) {
                             success = true;
                             break;
                         }
@@ -106,13 +129,13 @@ public class Grade2Translator extends Translator {
                 }
                 if (success) {
                     if(lastAbbriviatedIndex < index) {
-                        sb.append(grade1Translator.translate(word.substring(lastAbbriviatedIndex, index)));
+                        tr.append(grade1Translator.translate(word.substring(lastAbbriviatedIndex, index)));
                     }
 
                     if (abbreviation.getWord().length() > 2 && (index > 0 || index + abbreviatedWordWithTashkeel.length() < word.length()) && !abbreviation.getWord().equals("كان")) {
-                        sb.append( "⠤" );
+                        tr.append("⠤");
                     }
-                    sb.append(abbreviation.getSymbol());
+                    tr.append(abbreviation.getSymbol());
 
                     index = index + abbreviatedWordWithTashkeel.length();
                     lastAbbriviatedIndex = index;
@@ -124,10 +147,11 @@ public class Grade2Translator extends Translator {
         }
 
         if(lastAbbriviatedIndex < word.length() && lastAbbriviatedIndex < index) {
-            sb.append(grade1Translator.translate(word.substring(lastAbbriviatedIndex, index)));
+            tr.append(grade1Translator.translate(word.substring(lastAbbriviatedIndex, index)));
         }
 
-        return sb.toString();
+        return tr;
+
     }
 
     private boolean isNumber(char c) {
@@ -137,6 +161,7 @@ public class Grade2Translator extends Translator {
             return false;
         }
     }
+
 
     private String extractAbbreviationWithTashkeel(Grade2Abbreviation abbreviation, String word, int startIndex) {
         int endIndex = startIndex;

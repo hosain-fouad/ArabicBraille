@@ -3,7 +3,8 @@ Online Translation api that translate arabic into Braille.
 Todo:
 New Features:
   -[Done] support Braille grade2
-  -[Done] handle the Tashkeel in grade 2
+  -[Done] handle KSA Tashkeel style in grade 2
+  - handle Egyptain tashkeel style in grade 2, put the tashkeel on top of the char.
 
 Better to have:
   - change the way of getting the translation input as a stream instead of one string input cause in the future 
@@ -12,6 +13,7 @@ Better to have:
 Cleaning:
   - use java.util.logging to log important info (ex: unrecognized chars).
   - more documentation.
+  - constants for spacing and special chars.
 
 Note:
 This project was created from the samples in

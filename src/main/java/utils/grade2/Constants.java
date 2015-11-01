@@ -9,6 +9,7 @@ import java.util.Set;
  * Created by hosainfathelbab on 4/11/15.
  */
 public class Constants {
+
     public static final Set<Character> punctuation = new HashSet<Character>();
     public static final Set<Character> tashkeel = new HashSet<Character>();
     public static final Set<String> objectPronouns = new HashSet<String>();
